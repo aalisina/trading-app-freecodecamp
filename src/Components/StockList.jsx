@@ -7,15 +7,30 @@ function StockList() {
   useEffect(() => {
     let isMounted = true;
     const fetchData = async () => {
+      const responses = [];
       try {
-        const resp = await finnhub.get("/quote", {
+        const resp1 = await finnhub.get("/quote", {
           params: {
             symbol: "MSFT",
           },
         });
-        console.log(resp);
+        responses.push(resp1);
+        const resp2 = await finnhub.get("/quote", {
+          params: {
+            symbol: "GOOGL",
+          },
+        });
+        responses.push(resp2);
+        const resp3 = await finnhub.get("/quote", {
+          params: {
+            symbol: "AMZN",
+          },
+        });
+        responses.push(resp3);
+
+        console.log(responses);
         if (isMounted) {
-          setStocks(resp.data);
+          setStocks(responses);
         }
       } catch (error) {}
     };
