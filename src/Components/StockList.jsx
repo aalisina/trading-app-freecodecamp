@@ -3,7 +3,7 @@ import finnhub from "../Apis/finnhub";
 
 function StockList() {
   const [watchList, setWatchList] = useState(["GOOGL", "MSFT", "AMZN"]);
-  const [stocks, setStocks] = useState([]);
+  const [stocks, setStocks] = useState();
   useEffect(() => {
     let isMounted = true;
     const fetchData = async () => {
@@ -28,7 +28,7 @@ function StockList() {
         console.log(responses);
 
         if (isMounted) {
-          setStocks(responses);
+          console.log(responses);
         }
       } catch (err) {
         console.error(err);
