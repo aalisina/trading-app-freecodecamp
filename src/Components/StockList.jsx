@@ -6,7 +6,11 @@ function StockList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resp = await finnhub.get("/quote?symbol=MSFT");
+        const resp = await finnhub.get("/quote", {
+          params: {
+            symbol: "MSFT",
+          },
+        });
         console.log(resp);
       } catch (error) {}
     };
