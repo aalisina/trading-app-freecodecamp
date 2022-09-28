@@ -6,7 +6,7 @@ import StockDetail from "./Components/StockDetail";
 function App() {
   return (
     <div className="App">
-      <main>
+      <main className="container">
         <Router>
           <Routes>
             <Route path="/" element={<StockOverview />} />
