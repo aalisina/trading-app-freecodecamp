@@ -1,10 +1,18 @@
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import StockOverview from "./Components/StockOverview";
+import StockDetail from "./Components/StockDetail";
 
 function App() {
   return (
     <div className="App">
       <main>
-        <h1 className='mt-5'>App running</h1>
+        <Router>
+          <Routes>
+            <Route path="/" element={<StockOverview />} />
+            <Route path="/detail/:symbol" element={<StockDetail />} />
+          </Routes>
+        </Router>
       </main>
     </div>
   );
