@@ -1,6 +1,8 @@
-import React from "react";
+import { useState } from "react";
 
 function AutoComplete() {
+  const [search, setSearch] = useState("");
+
   return (
     <div className="w-50 p-5 rounded mx-auto">
       <div className="form-floating dropdown">
@@ -11,6 +13,8 @@ function AutoComplete() {
           className="form-control"
           placeholder="Search"
           autoComplete="off"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
         <label htmlFor="search">Search</label>
         {/* When you assign the classname of dropdown-menu, bootstrap automatically gives it a display
