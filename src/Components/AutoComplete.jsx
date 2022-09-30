@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import finnhub from "../Apis/finnhub";
+import { WatchListContext } from "../Context/WatchListContext";
 
 function AutoComplete() {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
+  const { addStock } = useContext(WatchListContext);
 
   const renderDropdown = () => {
     const dropDownClass = search ? "show" : null;
