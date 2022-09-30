@@ -47,7 +47,7 @@ function StockList() {
     fetchData();
     // When the component gets unmounted
     return () => (isMounted = false);
-  }, []);
+  }, [watchList]);
 
   return (
     <div>
