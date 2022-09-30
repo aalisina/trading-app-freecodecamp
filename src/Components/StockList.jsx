@@ -23,7 +23,7 @@ function StockList() {
             symbol: stock.config.params.symbol,
           };
         });
-        
+
         console.log(modifiedResponses);
         if (isMounted) {
           setStocks(modifiedResponses);
@@ -38,7 +38,40 @@ function StockList() {
     return () => (isMounted = false);
   }, []);
 
-  return <h3>Stock List</h3>;
+  return (
+    <div>
+      <table className="table hover mt-5">
+        <thead style={{ color: "rgb(79,89,102)" }}>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Last</th>
+            <th scope="col">Change</th>
+            <th scope="col">Change%</th>
+            <th scope="col">High</th>
+            <th scope="col">Low</th>
+            <th scope="col">Open</th>
+            <th scope="col">Pclose</th>
+          </tr>
+        </thead>
+        <tbody>
+          {stocks.map((stock) => {
+            return (
+              <tr className="table-row" key={stock.symbol}>
+                <th scope="row">{stock.symbol}</th>
+                <td>{stock.data.c}</td>
+                <td className="text-success">{stock.data.d}</td>
+                <td className="text-danger">{stock.data.dp}</td>
+                <td>{stock.data.h}</td>
+                <td>{stock.data.l}</td>
+                <td>{stock.data.o}</td>
+                <td>{stock.data.pc}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 export default StockList;
