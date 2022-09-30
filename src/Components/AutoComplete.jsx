@@ -1,7 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import finnhub from "../Apis/finnhub";
 
 function AutoComplete() {
   const [search, setSearch] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await finnhub.get("/search", {
+          params: {
+            q: search,
+          },
+        });
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    if (search.length > 0) {
+      fetchData();
+    }
+  }, [search]);
 
   return (
     <div className="w-50 p-5 rounded mx-auto">
