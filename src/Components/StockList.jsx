@@ -73,7 +73,7 @@ function StockList() {
                   {stock.data.d} {renderIcon(stock.data.d)}
                 </td>
                 <td className={`text-${changeColor(stock.data.dp)}`}>
-                  {stock.data.dp}
+                  {stock.data.dp} {renderIcon(stock.data.d)}
                 </td>
                 <td>{stock.data.h}</td>
                 <td>{stock.data.l}</td>
