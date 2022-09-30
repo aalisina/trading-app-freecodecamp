@@ -3,15 +3,18 @@ import finnhub from "../Apis/finnhub";
 
 function AutoComplete() {
   const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await finnhub.get("/search", {
+        const { data } = await finnhub.get("/search", {
           params: {
             q: search,
           },
         });
-        console.log(response);
+        console.log(data);
+        setResults(data);
       } catch (error) {
         console.error(error);
       }
