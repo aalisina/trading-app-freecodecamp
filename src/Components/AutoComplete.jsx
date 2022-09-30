@@ -21,7 +21,11 @@ function AutoComplete() {
       >
         {results.map((stock) => {
           return (
-            <li className="dropdown-item" key={stock.symbol}>
+            <li
+              onClick={() => addStock(stock.symbol)}
+              className="dropdown-item"
+              key={stock.symbol}
+            >
               {stock.description} ({stock.symbol})
             </li>
           );
