@@ -4,6 +4,9 @@ import finnhub from "../Apis/finnhub";
 function StockList() {
   const [watchList, setWatchList] = useState(["GOOGL", "MSFT", "AMZN"]);
   const [stocks, setStocks] = useState([]);
+  const changeColor = (data) => {
+    return data > 0 ? "success" : "danger";
+  };
   useEffect(() => {
     let isMounted = true;
     const fetchData = async () => {
@@ -59,8 +62,12 @@ function StockList() {
               <tr className="table-row" key={stock.symbol}>
                 <th scope="row">{stock.symbol}</th>
                 <td>{stock.data.c}</td>
-                <td className="text-success">{stock.data.d}</td>
-                <td className="text-danger">{stock.data.dp}</td>
+                <td className={`text-${changeColor(stock.data.d)}`}>
+                  {stock.data.d}
+                </td>
+                <td className={`text-${changeColor(stock.data.dp)}`}>
+                  {stock.data.dp}
+                </td>
                 <td>{stock.data.h}</td>
                 <td>{stock.data.l}</td>
                 <td>{stock.data.o}</td>
