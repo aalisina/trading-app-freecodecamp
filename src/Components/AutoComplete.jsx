@@ -6,6 +6,7 @@ function AutoComplete() {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
+    let isMounted = true;
     const fetchData = async () => {
       try {
         const { data } = await finnhub.get("/search", {
@@ -14,7 +15,9 @@ function AutoComplete() {
           },
         });
         console.log(data);
-        setResults(data);
+        if (isMounted) {
+          setResults(data.result);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -22,6 +25,7 @@ function AutoComplete() {
     if (search.length > 0) {
       fetchData();
     }
+    return () => (isMounted = false);
   }, [search]);
 
   return (
