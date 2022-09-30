@@ -23,9 +23,10 @@ function StockList() {
             symbol: stock.config.params.symbol,
           };
         });
+        
         console.log(modifiedResponses);
         if (isMounted) {
-          setStocks(responses);
+          setStocks(modifiedResponses);
         }
       } catch (err) {
         console.error(err);
