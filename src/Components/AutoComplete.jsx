@@ -13,6 +13,16 @@ function AutoComplete() {
           autoComplete="off"
         />
         <label htmlFor="search">Search</label>
+        {/* When you assign the classname of dropdown-menu, bootstrap automatically gives it a display
+        of none, so it won't be visible. If we want to show it, we add the class show to it 
+                <ul className="dropdown-menu show">
+        */}
+        <ul className="dropdown-menu">
+          <li>Stock1</li>
+          <li>Stock2</li>
+          <li>Stock3</li>
+          <li>Stock4</li>
+        </ul>
       </div>
     </div>
   );
