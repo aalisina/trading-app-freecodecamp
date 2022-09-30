@@ -22,7 +22,10 @@ function AutoComplete() {
         {results.map((stock) => {
           return (
             <li
-              onClick={() => addStock(stock.symbol)}
+              onClick={() => {
+                addStock(stock.symbol);
+                setSearch("");
+              }}
               className="dropdown-item"
               key={stock.symbol}
             >
