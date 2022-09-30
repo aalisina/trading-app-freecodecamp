@@ -24,6 +24,9 @@ function AutoComplete() {
     };
     if (search.length > 0) {
       fetchData();
+    } else {
+      // Without this the state doesn't get updated if we empty the search field after a search
+      setResults([]);
     }
     return () => (isMounted = false);
   }, [search]);
