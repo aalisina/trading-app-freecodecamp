@@ -76,6 +76,7 @@ function StockList() {
                 onClick={() => handleStockSelect(stock.symbol)}
                 className="table-row"
                 key={stock.symbol}
+                style={{ cursor: "pointer" }}
               >
                 <th scope="row">{stock.symbol}</th>
                 <td>{stock.data.c}</td>
