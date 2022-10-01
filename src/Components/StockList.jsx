@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import finnhub from "../Apis/finnhub";
 import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs";
 import { WatchListContext } from "../Context/WatchListContext";
@@ -6,7 +7,11 @@ import { WatchListContext } from "../Context/WatchListContext";
 function StockList() {
   const [stocks, setStocks] = useState([]);
   const { watchList } = useContext(WatchListContext);
+  const navigate = useNavigate();
 
+  const handleStockSelect = (symbol) => {
+    navigate(`detail/${symbol}`);
+  };
   const changeColor = (data) => {
     return data > 0 ? "success" : "danger";
   };
@@ -67,7 +72,11 @@ function StockList() {
         <tbody>
           {stocks.map((stock) => {
             return (
-              <tr className="table-row" key={stock.symbol}>
+              <tr
+                onClick={() => handleStockSelect(stock.symbol)}
+                className="table-row"
+                key={stock.symbol}
+              >
                 <th scope="row">{stock.symbol}</th>
                 <td>{stock.data.c}</td>
                 <td className={`text-${changeColor(stock.data.d)}`}>
