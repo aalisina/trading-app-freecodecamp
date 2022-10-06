@@ -18,15 +18,15 @@ function StockChart({ chartData, symbol }) {
   };
   // Determine which data set is selected and grap the last element and substract it from the first
   // one
-  const color =
-    determineTimeFormat()[determineTimeFormat().length - 1].y -
-      determineTimeFormat()[0].y >
-    0
-      ? "#26C281"
-      : "#ed3419";
+  // const color =
+  //   determineTimeFormat()[determineTimeFormat().length - 1].y -
+  //     determineTimeFormat()[0].y >
+  //   0
+  //     ? "#26C281"
+  //     : "#ed3419";
   const options = {
     // colors: [#ass], color can be specified in the options
-    colors: [color],
+    colors: ["#ed3419"],
     title: {
       text: symbol,
       align: "center",
