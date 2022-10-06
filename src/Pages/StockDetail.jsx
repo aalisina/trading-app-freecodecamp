@@ -21,33 +21,37 @@ function StockDetail() {
       }
       const oneWeekAgo = curTimeSeconds - 60 * 60 * 24 * 7;
       const oneYearAgo = curTimeSeconds - 60 * 60 * 24 * 365;
-      const responses = Promise.all([
-        finnhub.get("/stock/candle", {
-          params: {
-            symbol,
-            from: oneDayAgo,
-            to: curTimeSeconds,
-            resolution: 30,
-          },
-        }),
-        finnhub.get("/stock/candle", {
-          params: {
-            symbol,
-            from: oneWeekAgo,
-            to: curTimeSeconds,
-            resolution: 60,
-          },
-        }),
-        finnhub.get("/stock/candle", {
-          params: {
-            symbol,
-            from: oneYearAgo,
-            to: curTimeSeconds,
-            resolution: "W",
-          },
-        }),
-      ]);
-      console.log(responses);
+      try {
+        const responses = Promise.all([
+          finnhub.get("/stock/candle", {
+            params: {
+              symbol,
+              from: oneDayAgo,
+              to: curTimeSeconds,
+              resolution: 30,
+            },
+          }),
+          finnhub.get("/stock/candle", {
+            params: {
+              symbol,
+              from: oneWeekAgo,
+              to: curTimeSeconds,
+              resolution: 60,
+            },
+          }),
+          finnhub.get("/stock/candle", {
+            params: {
+              symbol,
+              from: oneYearAgo,
+              to: curTimeSeconds,
+              resolution: "W",
+            },
+          }),
+        ]);
+        console.log(responses);
+      } catch (err) {
+        console.error(err);
+      }
     };
     fetchData();
   }, []);
