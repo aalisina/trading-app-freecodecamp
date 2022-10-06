@@ -6,7 +6,7 @@ import { WatchListContext } from "../Context/WatchListContext";
 
 function StockList() {
   const [stocks, setStocks] = useState([]);
-  const { watchList } = useContext(WatchListContext);
+  const { watchList, deleteStock } = useContext(WatchListContext);
   const navigate = useNavigate();
 
   const handleStockSelect = (symbol) => {
@@ -91,7 +91,10 @@ function StockList() {
                 <td>{stock.data.o}</td>
                 <td>
                   {stock.data.pc}{" "}
-                  <button className="btn btn-danger btn-sm ml-3 d-inline-block delete-button">
+                  <button
+                    onClick={() => deleteStock(stock.symbol)}
+                    className="btn btn-danger btn-sm ml-3 d-inline-block delete-button"
+                  >
                     Remove
                   </button>
                 </td>
