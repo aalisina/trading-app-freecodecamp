@@ -20,9 +20,7 @@ function StockDetail() {
         oneDayAgo = curTimeSeconds - 60 * 60 * 24;
       }
 
-      const oneWeekAgo = curTimeSeconds - 60 * 60 * 24 * 7;
-      const oneYearAgo = curTimeSeconds - 60 * 60 * 24 * 365;
-      const response = await finnhub.get("/stock/candle", {
+      const responseDay = await finnhub.get("/stock/candle", {
         params: {
           symbol,
           from: oneDayAgo,
@@ -30,7 +28,27 @@ function StockDetail() {
           resolution: 30,
         },
       });
-      console.log(response);
+      const oneWeekAgo = curTimeSeconds - 60 * 60 * 24 * 7;
+      const responseWeek = await finnhub.get("/stock/candle", {
+        params: {
+          symbol,
+          from: oneWeekAgo,
+          to: curTimeSeconds,
+          resolution: 60,
+        },
+      });
+      const oneYearAgo = curTimeSeconds - 60 * 60 * 24 * 365;
+      const responseYear = await finnhub.get("/stock/candle", {
+        params: {
+          symbol,
+          from: oneYearAgo,
+          to: curTimeSeconds,
+          resolution: "W",
+        },
+      });
+      console.log(responseDay);
+      console.log(responseWeek);
+      console.log(responseYear);
     };
     fetchData();
   }, []);
