@@ -92,7 +92,10 @@ function StockList() {
                 <td>
                   {stock.data.pc}{" "}
                   <button
-                    onClick={() => deleteStock(stock.symbol)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      deleteStock(stock.symbol);
+                    }}
                     className="btn btn-danger btn-sm ml-3 d-inline-block delete-button"
                   >
                     Remove
