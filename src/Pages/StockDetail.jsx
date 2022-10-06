@@ -9,7 +9,17 @@ function StockDetail() {
       const date = new Date();
       // Divide by 1000 to get in seconds
       const curTimeSeconds = Math.floor(date.getTime() / 1000);
-      const oneDayAgo = curTimeSeconds - 60 * 60 * 24;
+      let oneDayAgo;
+      //if saturday
+      if (date.getDay() === 6) {
+        oneDayAgo = curTimeSeconds - 60 * 60 * 24 * 2;
+        //if sunday
+      } else if (date.getDay() === 0) {
+        oneDayAgo = curTimeSeconds - 60 * 60 * 24 * 3;
+      } else {
+        oneDayAgo = curTimeSeconds - 60 * 60 * 24;
+      }
+
       const oneWeekAgo = curTimeSeconds - 60 * 60 * 24 * 7;
       const oneYearAgo = curTimeSeconds - 60 * 60 * 24 * 365;
       const response = await finnhub.get("/stock/candle", {
