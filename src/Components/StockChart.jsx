@@ -4,6 +4,18 @@ import Chart from "react-apexcharts";
 function StockChart({ chartData, symbol }) {
   const { day, week, year } = chartData;
   const [dateFormat, setDateFormat] = useState("24h");
+  const determineTimeFormat = () => {
+    switch (dateFormat) {
+      case "24h":
+        return day;
+      case "7d":
+        return week;
+      case "1y":
+        return year;
+      default:
+        return day;
+    }
+  };
   const options = {
     title: {
       text: symbol,
