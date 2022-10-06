@@ -26,7 +26,7 @@ function StockChart({ chartData, symbol }) {
   //     : "#ed3419";
   const options = {
     // colors: [#ass], color can be specified in the options
-    colors: ["#ed3419"],
+    colors: ["#26C281"],
     title: {
       text: symbol,
       align: "center",
