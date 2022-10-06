@@ -69,7 +69,7 @@ function StockDetail() {
       }
     };
     fetchData();
-  }, []);
+  }, [symbol]);
   return <h2>Stock details {symbol}</h2>;
 }
 
