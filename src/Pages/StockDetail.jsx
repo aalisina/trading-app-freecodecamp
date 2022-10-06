@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import finnhub from "../Apis/finnhub";
 
 function StockDetail() {
   const { symbol } = useParams();
+  const [chartData, setChartData] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const date = new Date();
@@ -59,3 +61,15 @@ function StockDetail() {
 }
 
 export default StockDetail;
+
+// We want to manipulate the data to store it in the chartData state as following
+//
+// const chartData = {
+//     day: ['Data for one day']
+//     week: ['Data for one week']
+//     year: ['Data for one year']
+//       }
+//
+// The data for each item in the object will have the following structure
+//
+// const data = [{x: 'some value', y: 'other value'},{x: 'some value', y: 'other value'}]
