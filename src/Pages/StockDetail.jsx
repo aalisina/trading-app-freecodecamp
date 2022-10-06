@@ -75,7 +75,7 @@ function StockDetail() {
     <div>
       {chartData && (
         <div>
-          <StockChart />
+          <StockChart chartData={chartData} />
         </div>
       )}
     </div>

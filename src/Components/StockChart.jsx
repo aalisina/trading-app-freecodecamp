@@ -1,6 +1,6 @@
 import React from "react";
 
-function StockChart() {
+function StockChart({ chartData }) {
   return <h3>Stock chart</h3>;
 }
 
