@@ -61,13 +61,23 @@ function StockChart({ chartData, symbol }) {
       <Chart options={options} series={series} type="area" width="100%" />
       <div>
         <button
-          className="btn btn-outline-primary"
+          className={renderButtonSelect("24h")}
           onClick={() => setDateFormat("24h")}
         >
           24h
         </button>
-        <button onClick={() => setDateFormat("7d")}>7d</button>
-        <button onClick={() => setDateFormat("1y")}>1y</button>
+        <button
+          className={renderButtonSelect("7d")}
+          onClick={() => setDateFormat("7d")}
+        >
+          7d
+        </button>
+        <button
+          className={renderButtonSelect("1y")}
+          onClick={() => setDateFormat("1y")}
+        >
+          1y
+        </button>
       </div>
     </div>
   );
