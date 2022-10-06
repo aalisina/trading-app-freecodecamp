@@ -89,7 +89,12 @@ function StockList() {
                 <td>{stock.data.h}</td>
                 <td>{stock.data.l}</td>
                 <td>{stock.data.o}</td>
-                <td>{stock.data.pc}</td>
+                <td>
+                  {stock.data.pc}{" "}
+                  <button className="btn btn-danger btn-sm ml-3 d-inline-block delete-button">
+                    Remove
+                  </button>
+                </td>
               </tr>
             );
           })}
