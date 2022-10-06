@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import finnhub from "../Apis/finnhub";
 
 function StockData({ symbol }) {
+  const [stockData, setStockData] = useState();
   useEffect(() => {
     let isMounted = true;
     const fetchData = async () => {
@@ -11,7 +12,9 @@ function StockData({ symbol }) {
             symbol,
           },
         });
-        console.log(response);
+        if (isMounted) {
+          setStockData(response.data);
+        }
       } catch (err) {
         console.error(err);
       }
