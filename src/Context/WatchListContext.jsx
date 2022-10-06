@@ -1,14 +1,21 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const WatchListContext = createContext();
 
 export const WatchListContextProvider = (props) => {
-  const [watchList, setWatchList] = useState(["GOOGL", "MSFT", "AMZN"]);
+  const [watchList, setWatchList] = useState(
+    localStorage.getItem("watchList")?.split(",") || ["GOOGL", "MSFT", "AMZN"]
+    // JSON.parse(localStorage.getItem("watchList")) || ["GOOGL", "MSFT", "AMZN"]
+  );
   const addStock = (symbol) => {
     if (watchList.indexOf(symbol) === -1) {
       setWatchList([...watchList, symbol]);
     } else return;
   };
+
+  useEffect(() => {
+    localStorage.setItem("watchList", JSON.stringify(watchList));
+  }, [watchList]);
 
   const deleteStock = (symbol) => {
     const modifiedList = watchList.filter((el) => el !== symbol);
