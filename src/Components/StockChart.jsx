@@ -27,7 +27,11 @@ function StockChart({ chartData, symbol }) {
       data: day,
     },
   ];
-  return <div></div>;
+  return (
+    <div className="mt-5 p-4 shadow-sm bg-white">
+      <Chart options={options} series={series} type="area" width="100%" />
+    </div>
+  );
 }
 
 export default StockChart;
