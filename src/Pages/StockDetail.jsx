@@ -2,6 +2,15 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import finnhub from "../Apis/finnhub";
 
+const formatData = (data) => {
+  return data.t.map((el, index) => {
+    return {
+      x: el * 1000,
+      y: data.c[index],
+    };
+  });
+};
+
 function StockDetail() {
   const { symbol } = useParams();
   const [chartData, setChartData] = useState([]);
