@@ -19,6 +19,9 @@ function StockChart({ chartData, symbol }) {
     },
     xaxis: {
       type: "datetime",
+      labels: {
+        dateTimeUTC: false,
+      },
     },
   };
   const series = [
