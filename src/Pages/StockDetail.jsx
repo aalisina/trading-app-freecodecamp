@@ -50,7 +50,11 @@ function StockDetail() {
             },
           }),
         ]);
-        console.log(responses);
+        setChartData({
+          day: formatData(responses[0].data),
+          week: formatData(responses[1].data),
+          year: formatData(responses[2].data),
+        });
       } catch (err) {
         console.error(err);
       }
