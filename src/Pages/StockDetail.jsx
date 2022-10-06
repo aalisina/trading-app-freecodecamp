@@ -22,7 +22,7 @@ function StockDetail() {
       const oneWeekAgo = curTimeSeconds - 60 * 60 * 24 * 7;
       const oneYearAgo = curTimeSeconds - 60 * 60 * 24 * 365;
       try {
-        const responses = Promise.all([
+        const responses = await Promise.all([
           finnhub.get("/stock/candle", {
             params: {
               symbol,
